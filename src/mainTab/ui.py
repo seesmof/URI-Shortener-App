@@ -75,3 +75,4 @@ def renderMainTab(root):
     openLinkButton.configure(
         command=lambda: openLink(outputLinkEntry.get(), inputLinkEntry.get())
     )
+    inputLinkEntry.bind("<Return>", lambda event: shortenLink(inputLinkEntry, outputLinkEntry, *optionsElements))

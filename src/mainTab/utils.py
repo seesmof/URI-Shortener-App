@@ -17,8 +17,12 @@ def shortenLink(inputLinkBox, outputLinkBox, autoCopyToggle, autoOpenToggle):
         console.log("[red]Failed to shorten URL - No input URL was entered[/red]")
     else:
         outputLinkBox.delete(0, "end")
-        shortener = Shortener()
-        shortUrl = shortener.tinyurl.short(url)
+        try:
+            shortener = Shortener()
+            shortUrl = shortener.tinyurl.short(url)
+        except:
+            AlertPopup("Failed to shorten URL")
+            console.log("[red]Failed to shorten URL[/]")
         outputLinkBox.insert(0, shortUrl)
 
         doAutoCopy, doAutoOpen = (
